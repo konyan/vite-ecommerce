@@ -85,6 +85,40 @@ export const Input = styled.input`
     }
 `
 
+type CardInputProps = {
+    cardType?: string
+}
+
+export const CardInput = styled(Input)`
+    padding-right: 30px;
+
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 32px;
+
+    ${({ cardType }: CardInputProps) => {
+        return cardType === null
+            ? css`
+                  background-image: linear-gradient(
+                          rgba(255, 255, 255, 0.5),
+                          rgba(255, 255, 255, 0.5)
+                      ),
+                      url("https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/logo/mastercard.svg"),
+                      url("https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/logo/visa.svg");
+                  background-position: 88% 7px, 98% 7px;
+              `
+            : cardType === "visa"
+            ? css`
+                  background-image: url("https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/logo/visa.svg");
+                  background-position: 98% 7px;
+              `
+            : css`
+                  background-image: url("https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/logo/mastercard.svg");
+                  background-position: 98% 7px;
+              `
+    }}
+`
+
 export const ErrorMessage = styled.div`
     color: var(--error);
     font-weight: 500;

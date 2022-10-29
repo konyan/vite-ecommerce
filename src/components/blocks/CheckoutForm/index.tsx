@@ -29,6 +29,7 @@ import {
     Form,
     FieldGroups,
     FieldsMerge,
+    CardInput,
 } from "./index.styled"
 import { postPayment } from "@app/hooks/services/backend"
 
@@ -37,6 +38,7 @@ type TypeCheckoutFormDefaultValues = {
     card_number: string | null
     card_expire: string | null
     cvv: string | null
+    cardType: string | undefined
 }
 
 export type TypeCheckoutFormValues = NonNullable<TypeCheckoutFormDefaultValues>
@@ -52,6 +54,7 @@ const defaultState: TypeCheckoutFormDefaultValues = {
     card_number: null,
     card_expire: null,
     cvv: null,
+    cardType: null,
 }
 
 const CheckoutForm: FC<CheckoutFormProps> = ({
@@ -157,8 +160,10 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
     const formatter = {
         cardNumber: (e: ChangeEvent<HTMLInputElement>) => {
             const value = formatCardNumber(e.target.value)
+            const cardType = parseCardType(value)
 
             updateModel("card_number", value)
+            updateModel("cardType", cardType)
         },
         cardExpire: (e: ChangeEvent<HTMLInputElement>) => {
             const value = formatCardExpiry(e.target.value)
@@ -201,7 +206,8 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                                 Card information
                             </FieldLabel>
 
-                            <Input
+                            <CardInput
+                                cardType={models.cardType}
                                 {...register.input({
                                     name: "card_number",
                                     onChange: formatter.cardNumber,
