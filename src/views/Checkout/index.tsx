@@ -73,7 +73,7 @@ const PageCheckout: FC<InterfaceCheckoutProps> = ({
     )
 
     const onSubmit = (values: TypeCheckoutFormValues) => {
-        const requestId = generateRandomNumber()
+        const requestId = generateRandomNumber().toString()
 
         toast.promise(
             post({
@@ -87,7 +87,7 @@ const PageCheckout: FC<InterfaceCheckoutProps> = ({
                     email: `${values.email}`,
                 },
                 products: CartItems.map((product) => ({
-                    id: product.id,
+                    id: product.id.toString(),
                     quantity: product.qty,
                 })),
             }),

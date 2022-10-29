@@ -30,8 +30,8 @@ import {
     FieldGroups,
     FieldsMerge,
     CardInput,
+    SubmitButton,
 } from "./index.styled"
-import { postPayment } from "@app/hooks/services/backend"
 
 type TypeCheckoutFormDefaultValues = {
     email: string | null
@@ -54,7 +54,7 @@ const defaultState: TypeCheckoutFormDefaultValues = {
     card_number: null,
     card_expire: null,
     cvv: null,
-    cardType: null,
+    cardType: "",
 }
 
 const CheckoutForm: FC<CheckoutFormProps> = ({
@@ -85,7 +85,6 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                         if (!validateCardNumber(value)) {
                             return helpers.error("string.cardNumber")
                         }
-                        console.log(parseCardType(value))
                         if (
                             !(
                                 parseCardType(value) === "visa" ||
@@ -259,9 +258,9 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                 </FieldGroups>
 
                 <Actions>
-                    <button disabled={state.$auto_invalid || loading}>
+                    <SubmitButton disabled={state.$auto_invalid || loading}>
                         {submitText}
-                    </button>
+                    </SubmitButton>
                 </Actions>
             </Form>
         </Container>

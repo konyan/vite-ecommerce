@@ -34,5 +34,5 @@ export const wait = (ms: number) => {
 
 //generate random number
 export const generateRandomNumber = () => {
-    return Math.floor(Math.random() * (9999999 - 1111111 + 1)) + 1111111
+    return Math.floor(Math.random() * (99999999 - 11111111 + 1)) + 11111111
 }

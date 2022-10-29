@@ -119,6 +119,20 @@ export const CardInput = styled(Input)`
     }}
 `
 
+export const SubmitButton = styled.button`
+    color: #fff;
+    font-size: 0.875em;
+    font-weight: 700;
+    padding: 9px 24px;
+    background-color: var(--button_bg);
+    border: none;
+    border-radius: 3px;
+
+    &:disabled {
+        opacity: 0.5;
+    }
+`
+
 export const ErrorMessage = styled.div`
     color: var(--error);
     font-weight: 500;
