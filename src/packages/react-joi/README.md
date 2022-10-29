@@ -29,7 +29,7 @@ function App() {
             email: false,
         },
         validationOptions: {
-            abortEarly: true
+            abortEarly: true,
         },
     })
 

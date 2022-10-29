@@ -122,8 +122,6 @@ function App() {
 }
 ```
 
-
-
 ### Combo with react-joi
 
 ```jsx
